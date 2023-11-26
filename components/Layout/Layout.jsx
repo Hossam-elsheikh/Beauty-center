@@ -13,6 +13,7 @@ const Layout = (props) => {
     <>
       {menu && <MobNav close={() => setMenu(false)} />}
       <div
+      className="d-flex flex-column justify-content-between"
         style={{
           height: "100vh",
           overflow: `${isShown ? "hidden" : "auto"}`,

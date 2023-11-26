@@ -27,6 +27,12 @@ const MobNav = (props) => {
           <Link onClick={()=>props.close()} href="/">
             <li>الاسئلة الشائعة</li>
           </Link>
+          <Link onClick={()=>props.close()} href="/seller">
+            <li>كن شريكاً</li>
+          </Link>
+          <Link onClick={()=>props.close()} href="/contact">
+            <li>تواصل معنا</li>
+          </Link>
         </ul>
       </nav>
     </div>

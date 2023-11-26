@@ -2,5 +2,5 @@
 -- frequently asked questions
 -- required fields in forms and validation
 -- onScroll animation
--- active link style
 -- files uploading in form
+-- عن المتحر . .. عن المنصة 

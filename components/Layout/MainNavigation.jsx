@@ -69,7 +69,7 @@ const MainNavigation = (props) => {
         <Link href="/seller">
           <button className="nav_btn shadow">كن شريكاً</button>
         </Link>
-        <Link href="#">
+        <Link href="/contact">
           <button className="nav_btn shadow">تواصل معنا</button>
         </Link>
         {/* <p className="p-0 text-white">En</p> */}

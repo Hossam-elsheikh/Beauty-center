@@ -96,7 +96,7 @@ const Main = () => {
               بها العملاء لجعل هذه العلامة التجارية قوية في الوطن العربي لتخصصها
               في الأنشطة التجارية المختلفة بالإضافة إلى النشاط الرئيسي.{" "}
             </p>
-            <Image src={q} className="q_mark" />
+            <Image src={q} className="q_mark d-none d-md-block" />
           </div>
 
           <div className="d-flex  align-items-center justify-content-center">
@@ -135,7 +135,7 @@ const Main = () => {
           <IoIosArrowDropdownCircle color="white" />
         </div>
       </div>
-      <div id="questions" className=" py-5 px-5" dir="rtl" ref={questions}>
+      <div id="questions" className="p-0 py-5 p-md-5" dir="rtl" ref={questions}>
         <Freq />
       </div>
     </div>

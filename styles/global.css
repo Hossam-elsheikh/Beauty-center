@@ -80,15 +80,7 @@ h1 {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
-@media (max-width:768px){
-    .section > svg:last-of-type {
-        display: none;
-    }
-    fieldset{
-      justify-content: center;
-    }
-    
-}
+
 .section > svg:last-of-type:hover {
   transform: scale(1.2);
 }
@@ -177,11 +169,78 @@ footer a {
   color: white;
   font-weight: 700;
 }
-footer a:hover {
+ a:hover {
   color: rgb(128, 0, 73);
 }
 
 .active{
   color: rgb(128, 0, 73);
 
+}
+
+.activeQ{
+  background-color: white !important;
+  color: var(--p-color) !important;
+  border: 2px solid var(--p-color) ;
+}
+
+.cont_form input{
+    min-width: 600px;
+}
+#formFile{
+  position: relative;
+}
+.mail{
+  display: flex;
+  font-size: 1.5rem;
+  background-color: white;
+  color: var(--p-color);
+  text-decoration: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid var(--p-color);
+  border-radius: 10px;
+  gap: .5rem !important;
+
+}
+.mail:hover{
+  background-color: var(--p-color);
+  color: white;
+}
+.social {
+  color: var(--p-color);
+  font-size: 3rem;
+  transition: all .3s ease-in-out;
+}
+.social:hover {
+  transform: scale(1.2);
+}
+/* media queries */
+@media (max-width:768px){
+  .section > svg:last-of-type {
+      display: none;
+  }
+  fieldset{
+    justify-content: center;
+  }
+  .q_list li{
+    width: 70px !important;
+    height: 70px !important;
+    font-size: .9rem;
+
+  }
+  .cont_form input{
+    min-width: 300px;
+}
+.mail{
+  font-size: 1rem;
+
+}
+}
+
+@media (min-width: 768px){
+  .w-md-75{
+    width: 75% !important;
+  }
 }
