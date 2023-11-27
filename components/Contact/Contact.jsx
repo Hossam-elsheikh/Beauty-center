@@ -18,9 +18,9 @@ import { FaTwitter } from "react-icons/fa";
 import { IoLogoTiktok } from "react-icons/io5";
 import { IoLogoYoutube } from "react-icons/io5";
 import { Tooltip } from 'react-tooltip'
-
 const Contact = () => {
   return (
+    <>
     <div className="p-1 p-md-5" dir="rtl">
       <div className="d-flex flex-column gap-2 justify-content-center align-items-center">
         <h3>تواصل مع القسم المختص</h3>
@@ -137,14 +137,14 @@ const Contact = () => {
       <hr />
       <div className="d-flex flex-column p-1 py-4 p-md-5 justify-content-center align-items-center gap-4">
         <h3>تابعنا على منصات التواصل الاجتماعي</h3>
-        <div className="d-flex gap-3 justify-content-center">
+        <div className="d-flex gap-3 justify-content-center flex-wrap">
           <Link data-tooltip-id="facebook" data-tooltip-content="Facebook" href="/" className="social">
             <FaFacebook />
           </Link>
           <Link data-tooltip-id="whatsapp" data-tooltip-content="Whatsapp" href="/" className="social">
             <IoLogoWhatsapp />
           </Link>
-          <Link data-tooltip-id="insta" data-tooltip-content="Instagram" href="/" className="social">
+          <Link data-tooltip-id="instagram" data-tooltip-content="Instagram" href="/" className="social">
             <RiInstagramFill />
           </Link>
           <Link data-tooltip-id="twitter" data-tooltip-content="Twitter" href="/" className="social">
@@ -166,6 +166,8 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </>
+
   );
 };
 

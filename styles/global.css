@@ -187,9 +187,7 @@ footer a {
 .cont_form input{
     min-width: 600px;
 }
-#formFile{
-  position: relative;
-}
+
 .mail{
   display: flex;
   font-size: 1.5rem;
@@ -204,6 +202,15 @@ footer a {
   gap: .5rem !important;
 
 }
+
+form button:hover{
+  background-color: #c94040 !important;
+}
+/* input:invalid {
+  border: none !important;
+  outline: 2px solid red !important;
+} */
+
 .mail:hover{
   background-color: var(--p-color);
   color: white;

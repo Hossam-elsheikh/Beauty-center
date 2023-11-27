@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { aggContext } from "../Context/aggContext";
@@ -198,9 +198,12 @@ const SellerForm = () => {
       ],
     },
   ];
+
+  function submitHandler(e) {
+    e.preventDefault();
+  }
   return (
     <div className="container m-auto px-0 py-5 p-md-5" dir="rtl">
-     
       <h2 className="text-center mb-4">انضم كبائع في منصة بيوتي سنتر</h2>
       <div className="border border-2 rounded p-4">
         <h4 className="mb-2">قبل أن تبدأ بملء الطلب : </h4>
@@ -224,68 +227,81 @@ const SellerForm = () => {
           على موقعنا. بالإضافة إلى ذلك، تحتفظ ببيوتي سنتر بحق تعديل شروط البائع
           قبل ان يتم قبولها على الموقع .
         </p>
-        
-        <form className="mt-3">
+
+        <form className="mt-3" onSubmit={(e) => submitHandler(e)}>
           <h4 className="my-2"> البيانات الأساسية للشركة</h4>
           <fieldset>
-            <input
-              className="form-control  m-2"
-              type="text"
-              name="tradeName"
-              placeholder="الاسم التجاري"
-            />
+            <div>
+              <input
+                className="form-control  m-2"
+                type="text"
+                required
+                name="tradeName"
+                placeholder="الاسم التجاري"
+              />
+              <div className="invalid-feedback">Please choose a username.</div>
+            </div>
             <input
               className="form-control  m-2"
               type="text"
               name="storeName"
+              required
               placeholder="اسم المتجر"
             />
             <input
               className="form-control  m-2"
               type="text"
               name="storeLocation"
+              required
               placeholder="مقر المتجر"
             />
             <input
               className="form-control  m-2"
               type="number"
               name="tradeNumber"
+              required
               placeholder="رقم السجل التجاري"
             />
             <input
               className="form-control  m-2"
               type="link"
               name="storeLink"
+              required
               placeholder="رابط المتجر"
             />
             <input
               className="form-control  m-2"
               type="number"
               name="validationNum"
+              required
               placeholder="رقم وثيقة التوثيق للتجارة اللإلكترونية"
             />
             <input
               className="form-control  m-2"
               type="number"
               name="taxNum"
+              required
               placeholder="الرقم الضريبي"
             />
             <input
               className="form-control  m-2"
               type="text"
               name="fieldOfInterest"
+              required
               placeholder="مجال النشاط"
             />
             <input
               className="form-control  m-2"
               type="text"
               name="compBranches"
+              required
               placeholder="فروع الشركة"
             />
             <input
               className="form-control  m-2"
               type="tel"
               dir="rtl"
+              required
               name="compCustomerServiceNum"
               placeholder="هاتف خدمة عملاء الشركة"
             />
@@ -293,6 +309,7 @@ const SellerForm = () => {
               className="form-control  m-2"
               type="email"
               name="compCustomerServiceEmail"
+              required
               placeholder="الإيميل الإلكتروني لخدمة عملاء الشركة"
             />
           </fieldset>
@@ -304,12 +321,14 @@ const SellerForm = () => {
               className="form-control  m-2"
               type="text"
               name="FullOwnerName"
+              required
               placeholder="الاسم بالكامل"
             />
             <input
               className="form-control  m-2"
               type="email"
               name="ownerEmail"
+              required
               placeholder="البريد الإلكتروني"
             />
             <input
@@ -317,6 +336,7 @@ const SellerForm = () => {
               type="tel"
               name="ownerTel"
               dir="rtl"
+              required
               placeholder="رقم الهاتف"
             />
           </fieldset>
@@ -328,12 +348,14 @@ const SellerForm = () => {
               className="form-control  m-2"
               type="text"
               name="FullManagerName"
+              required
               placeholder="الاسم بالكامل"
             />
             <input
               className="form-control  m-2"
               type="email"
               name="ManagerEmail"
+              required
               placeholder="البريد الإلكتروني"
             />
             <input
@@ -341,6 +363,7 @@ const SellerForm = () => {
               type="tel"
               name="ManagerTel"
               dir="rtl"
+              required
               placeholder="رقم الهاتف"
             />
           </fieldset>
@@ -379,12 +402,14 @@ const SellerForm = () => {
               className="form-control  m-2"
               type="number"
               name="productsCount"
+              required
               placeholder="عدد المنتجات"
             />
             <input
               className="form-control  m-2"
               type="number"
               name="categoriesCount"
+              required
               placeholder="عدد الأقسام الرئيسية"
             />
             <input
@@ -443,6 +468,52 @@ const SellerForm = () => {
               ))}
             </>
           ))}
+          <h4 className="my-3">المرفقات</h4>
+          <p className="my-2">يرجى إرفاق الملفات الآتية</p>
+          <div class="mb-3 position-relative">
+            <label for="tradeRecord" class="form-label mb-1">
+              السجل التجاري
+            </label>
+            <input
+              name="tradeRecord"
+              className="form-control"
+              type="file"
+              id="tradeRecord"
+            />
+          </div>
+          <div class="mb-3 position-relative">
+            <label for="taxRecord" class="form-label mb-1">
+              السجل الضريبي
+            </label>
+            <input
+              name="taxRecord"
+              className="form-control"
+              type="file"
+              id="taxRecord"
+            />
+          </div>
+          <div class="mb-3 position-relative">
+            <label for="onlineTradeLicenes" class="form-label mb-1">
+               رخصة التجارة الإلكترونية (مركز الأعمال)
+            </label>
+            <input
+              name="onlineTradeLicenes"
+              className="form-control"
+              type="file"
+              id="onlineTradeLicenes"
+            />
+          </div>
+          <div class="mb-3 position-relative">
+            <label for="iban" class="form-label mb-1">
+              الآيبان البنكي IBAN
+            </label>
+            <input
+              name="iban"
+              className="form-control"
+              type="file"
+              id="iban"
+            />
+          </div>
           <h4 className="my-2">مدخل البايانات </h4>
           <fieldset>
             <input
@@ -450,12 +521,14 @@ const SellerForm = () => {
               type="text"
               name="fullFillerName"
               placeholder="الاسم بالكامل"
+              required
             />
             <input
               className="form-control  m-2"
               type="email"
               name="fullFillerEmail"
               placeholder="البريد الإلكتروني"
+              required
             />
             <input
               className="form-control  m-2"
@@ -463,10 +536,11 @@ const SellerForm = () => {
               name="fillerTel"
               dir="rtl"
               placeholder="رقم الهاتف"
+              required
             />
           </fieldset>
           <div className="d-flex align-items-center gap-2 py-3">
-            <input id="check" type="checkbox" name="agreed" />
+            <input id="check" type="checkbox" name="agreed" required />
             <label htmlFor="check">أوافق على</label>
             <span
               style={{
@@ -479,20 +553,24 @@ const SellerForm = () => {
               شروط وأحكام البائع
             </span>{" "}
           </div>
-          <button  type="submit" className="btn clr_p text-light">
+          <button type="submit" className="btn clr_p text-light">
             إرسال الطلب
-          </button> 
+          </button>
           <p className="mt-3" style={{ fontWeight: "700" }}>
-          اطلع على{" "}
-          <span style={{ color: "palevioletred", textDecoration: "underline" }}>
-            الاسئلة الشائعة
-          </span>{" "}
-          او{" "}
-          <span style={{ color: "palevioletred", textDecoration: "underline" }}>
-            تواصل معنا{" "}
-          </span>{" "}
-          إن كان لديك أي استفسار او تواجهك مشكلة في ملء الطلب.
-        </p>
+            اطلع على{" "}
+            <Link href ='/#questions'
+              style={{ color: "palevioletred", textDecoration: "underline" }}
+            >
+              الاسئلة الشائعة
+            </Link>{" "}
+            او{" "}
+            <Link href='/contact' scroll={true}
+              style={{ color: "palevioletred", textDecoration: "underline" }}
+            >
+              تواصل معنا{" "}
+            </Link>{" "}
+            إن كان لديك أي استفسار او تواجهك مشكلة في ملء الطلب.
+          </p>
         </form>
       </div>
     </div>

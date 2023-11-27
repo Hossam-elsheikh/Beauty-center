@@ -1,6 +1,1 @@
--- Contact Us page
--- frequently asked questions
--- required fields in forms and validation
--- onScroll animation
--- files uploading in form
--- عن المتحر . .. عن المنصة 
+-- forms validation

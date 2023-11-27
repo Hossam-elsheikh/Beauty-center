@@ -1,13 +1,18 @@
-import React from 'react'
-import Contact from '../components/Contact/Contact'
+import React from "react";
+import Contact from "../components/Contact/Contact";
+import Head from 'next/head';
 
 const contact = () => {
   return (
-    <div className='py-5'>
-        
-        <Contact/>
-    </div>
-  )
-}
+    <>
+      <Head>
+        <title>Contact Us</title>
+      </Head>
+      <div className="py-5">
+        <Contact />
+      </div>
+    </>
+  );
+};
 
-export default contact
+export default contact;
