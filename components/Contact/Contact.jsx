@@ -77,18 +77,21 @@ const Contact = () => {
               className="form-control"
               type="text"
               name="fName"
+              required
               placeholder="الاسم بالكامل"
             />
             <input
               className="form-control"
               type="email"
               name="email"
+              required
               placeholder="البريد الإلكتروني"
             />
             <input
               className="form-control"
               type="tel"
               name="tel"
+              required
               dir="rtl"
               placeholder="رقم الهاتف"
             />
@@ -96,9 +99,11 @@ const Contact = () => {
               className="form-control"
               type="text"
               name="msgTitle"
+              required
               placeholder="عنوان الرسالة"
             />
-            <select className="form-select" aria-label="Default select example">
+            <select className="form-select"
+            required aria-label="Default select example">
               <option disabled selected>
                 الغرض من الرسالة
               </option>
@@ -115,6 +120,7 @@ const Contact = () => {
               id="exampleFormControlTextarea1"
               rows="3"
               placeholder="محتوى الرسالة"
+              required
             ></textarea>
             <div class="mb-3">
               <label for="formFile" class="form-label mb-1">
