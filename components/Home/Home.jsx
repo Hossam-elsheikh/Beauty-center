@@ -132,7 +132,9 @@ const Main = () => {
               </div>
             ))}
           </div>
-          <IoIosArrowDropdownCircle color="white" />
+          <IoIosArrowDropdownCircle color="white" onClick={() =>
+              questions.current.scrollIntoView({ behavior: "smooth" })
+            }/>
         </div>
       </div>
       <div id="questions" className="p-0 py-5 p-md-5" dir="rtl" ref={questions}>

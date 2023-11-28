@@ -49,14 +49,16 @@ const Footer = () => {
       <div className="d-flex flex-column gap-2 text-center ">
         <h5 className="text-light">قم بتحميل التطبيق</h5>
         <Link
-          href="/seller"
+          href="https://play.google.com/store/apps/details?id=com.mhamdino95.beauty"
+          target="_blank"
           className="d-flex gap-3 bg-light text_p justify-content-center align-items-center  p-2 border rounded "
         >
           <h6>جوجل بلاي</h6>
           <FaGooglePlay />
         </Link>
         <Link
-          href="/seller"
+          href="https://apps.apple.com/us/app/beauty-%D8%A8%D9%8A%D9%88%D8%AA%D9%8A/id6443757616"
+          target="_blank"
           className="d-flex bg-light text_p justify-content-center gap-3 align-items-center  p-2 border rounded "
         >
           <h6>آبل ستور</h6>

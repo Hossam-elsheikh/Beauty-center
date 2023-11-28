@@ -33,12 +33,14 @@ const MainNavigation = (props) => {
           alt="logo"
         />
       </Link>
+      <Link href='/contact'         className="d-flex d-md-none"
+>
       <MdContactSupport
         style={{ cursor: "pointer" }}
-        className="d-flex d-md-none"
         color="white"
         size="30px"
-      />
+        />
+        </Link>
 
       <nav className="d-none d-md-flex">
         <ul className="d-flex gap-3 align-items-center">
