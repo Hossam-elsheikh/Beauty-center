@@ -1,13 +1,26 @@
-import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 import { aggContext } from "../Context/aggContext";
+// import { submit } from "../../actions/submit";
+import { useRouter } from "next/router";
 
 const SellerForm = () => {
-  const router = useRouter();
   const { isShown, setIsShown } = useContext(aggContext);
-
+  const router = useRouter();
+  const submit = (e) => {
+    e.preventDefault();
+    fetch("/api/submit", {
+      method: "post",
+      body: JSON.stringify(
+        Object.fromEntries(new FormData(e.nativeEvent.target).entries())
+      ),
+    })
+      .then((r) => r.json())
+      .then(({ ok }) => {
+        if (ok) router.push("/");
+        else alert("Error");
+      });
+  };
   const questions = [
     {
       name: "حقوق الملكية الفكرية",
@@ -31,7 +44,7 @@ const SellerForm = () => {
           n: 4,
         },
         {
-         q:"هل تمانع وضع بانرات في موقعك توضح أنك شريك لبيوتي سنتر وان منتجاتك تباع في بيوتي سنتر؟",
+          q: "هل تمانع وضع بانرات في موقعك توضح أنك شريك لبيوتي سنتر وان منتجاتك تباع في بيوتي سنتر؟",
 
           n: 35,
         },
@@ -204,9 +217,6 @@ const SellerForm = () => {
     },
   ];
 
-  function submitHandler(e) {
-    e.preventDefault();
-  }
   return (
     <div className="container m-auto px-0 py-5 p-md-5" dir="rtl">
       <h2 className="text-center mb-4">انضم كبائع في منصة بيوتي سنتر</h2>
@@ -233,7 +243,12 @@ const SellerForm = () => {
           قبل ان يتم قبولها على الموقع .
         </p>
 
-        <form className="mt-3" onSubmit={(e) => submitHandler(e)}>
+        <form
+          method="post"
+          className="mt-3"
+          action="/api/submit"
+          onSubmit={submit}
+        >
           <h4 className="my-2"> البيانات الأساسية للشركة</h4>
           <fieldset>
             <div>
@@ -439,11 +454,11 @@ const SellerForm = () => {
             ></textarea>
           </fieldset>
           <h4 className="my-2">برجاء الإجابة على الاسئلة الآتية بنعم او لا</h4>
-          {questions.map((set) => (
-            <>
+          {questions.map((set, i) => (
+            <Fragment key={i}>
               <h5 className="my-3">{set.name}</h5>
-              {set.questions?.map((q) => (
-                <>
+              {set.questions?.map((q, i) => (
+                <Fragment key={i}>
                   <div className="d-flex align-items-center justify-content-between my-2">
                     <p>{q.q}</p>
                     <div className="d-flex gap-5 ">
@@ -454,9 +469,10 @@ const SellerForm = () => {
                         <label htmlFor={`q${q.n}y`}>نعم</label>
                         <input
                           id={`q${q.n}y`}
-                          checked
+                          defaultChecked
                           type="radio"
                           name={`q${q.n}`}
+                          value={1}
                         />
                       </div>
                       <div
@@ -464,19 +480,24 @@ const SellerForm = () => {
                         style={{ maxWidth: "100px" }}
                       >
                         <label htmlFor={`q${q.n}n`}>لا</label>
-                        <input id={`q${q.n}n`} type="radio" name={`q${q.n}`} />
+                        <input
+                          id={`q${q.n}n`}
+                          value={0}
+                          type="radio"
+                          name={`q${q.n}`}
+                        />
                       </div>
                     </div>
                   </div>
                   <hr />
-                </>
+                </Fragment>
               ))}
-            </>
+            </Fragment>
           ))}
           <h4 className="my-3">المرفقات</h4>
           <p className="my-2">يرجى إرفاق الملفات الآتية</p>
-          <div class="mb-3 position-relative">
-            <label for="tradeRecord" class="form-label mb-1">
+          <div className="mb-3 position-relative">
+            <label htmlFor="tradeRecord" className="form-label mb-1">
               السجل التجاري
             </label>
             <input
@@ -486,8 +507,8 @@ const SellerForm = () => {
               id="tradeRecord"
             />
           </div>
-          <div class="mb-3 position-relative">
-            <label for="taxRecord" class="form-label mb-1">
+          <div className="mb-3 position-relative">
+            <label htmlFor="taxRecord" className="form-label mb-1">
               السجل الضريبي
             </label>
             <input
@@ -497,9 +518,9 @@ const SellerForm = () => {
               id="taxRecord"
             />
           </div>
-          <div class="mb-3 position-relative">
-            <label for="onlineTradeLicenes" class="form-label mb-1">
-               رخصة التجارة الإلكترونية (مركز الأعمال)
+          <div className="mb-3 position-relative">
+            <label htmlFor="onlineTradeLicenes" className="form-label mb-1">
+              رخصة التجارة الإلكترونية (مركز الأعمال)
             </label>
             <input
               name="onlineTradeLicenes"
@@ -508,16 +529,11 @@ const SellerForm = () => {
               id="onlineTradeLicenes"
             />
           </div>
-          <div class="mb-3 position-relative">
-            <label for="iban" class="form-label mb-1">
+          <div className="mb-3 position-relative">
+            <label htmlFor="iban" className="form-label mb-1">
               الآيبان البنكي IBAN
             </label>
-            <input
-              name="iban"
-              className="form-control"
-              type="file"
-              id="iban"
-            />
+            <input name="iban" className="form-control" type="file" id="iban" />
           </div>
           <h4 className="my-2">مدخل البايانات </h4>
           <fieldset>
@@ -563,13 +579,16 @@ const SellerForm = () => {
           </button>
           <p className="mt-3" style={{ fontWeight: "700" }}>
             اطلع على{" "}
-            <Link href ='/#questions'
+            <Link
+              href="/#questions"
               style={{ color: "palevioletred", textDecoration: "underline" }}
             >
               الاسئلة الشائعة
             </Link>{" "}
             او{" "}
-            <Link href='/contact' scroll={true}
+            <Link
+              href="/contact"
+              scroll={true}
               style={{ color: "palevioletred", textDecoration: "underline" }}
             >
               تواصل معنا{" "}

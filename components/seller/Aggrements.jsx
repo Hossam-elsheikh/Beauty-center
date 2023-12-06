@@ -1,4 +1,3 @@
-import React from "react";
 import Text from "./Text";
 
 const Aggrements = (props) => {
@@ -15,7 +14,7 @@ const Aggrements = (props) => {
         </button>
       </div>
       <div className="px-1" style={{ maxHeight: "400px", overflowY: "scroll" }}>
-        <Text/>
+        <Text />
       </div>
     </div>
   );
