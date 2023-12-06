@@ -118,8 +118,11 @@ const Main = () => {
         <h1 className="text-center text-light mb-3">خدماتنا</h1>
         <div className="container-fluid flex-wrap flex-lg-nowrap d-flex align-items-center section p-0 p-md-5 gap-5 position-relative">
           <div className="row  d-flex flex-column flex-md-row justify-content-center">
-            {serv.map((s) => (
-              <div className="bg-light my-3 m-md-4 col-12 col-lg-5 text-center shadow rounded-3 p-3 gap-3 d-flex flex-column flex-md-row justify-content-center align-items-center">
+            {serv.map((s, i) => (
+              <div
+                key={i}
+                className="bg-light my-3 m-md-4 col-12 col-lg-5 text-center shadow rounded-3 p-3 gap-3 d-flex flex-column flex-md-row justify-content-center align-items-center"
+              >
                 <div className="d-flex flex-column gap-2">
                   <h5 className="text_p">{s.title}</h5>
                   <p>{s.description}</p>
@@ -132,9 +135,12 @@ const Main = () => {
               </div>
             ))}
           </div>
-          <IoIosArrowDropdownCircle color="white" onClick={() =>
+          <IoIosArrowDropdownCircle
+            color="white"
+            onClick={() =>
               questions.current.scrollIntoView({ behavior: "smooth" })
-            }/>
+            }
+          />
         </div>
       </div>
       <div id="questions" className="p-0 py-5 p-md-5" dir="rtl" ref={questions}>
