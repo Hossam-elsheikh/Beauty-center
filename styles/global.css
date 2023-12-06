@@ -139,7 +139,7 @@ fieldset input {
   height: 100vh;
   top: 2%;
   left: 0;
-  
+  z-index: 1;
 }
 .mob_nav{
   width: 100%;
