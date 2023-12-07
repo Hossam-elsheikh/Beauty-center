@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaQuestion } from "react-icons/fa";
 import { questions } from "./questions";
 import { MdOutlineNoteAlt } from "react-icons/md";
@@ -9,6 +9,13 @@ import { FaRegUser } from "react-icons/fa";
 
 const Freq = () => {
   const [activeSet, setActiveSet] = useState("من نحن");
+  useEffect(() => {
+    import("bootstrap").then(({ Collapse }) =>
+      Array.from(document.getElementsByClassName("collapse")).forEach(
+        (el) => new Collapse(el, { toggle: false })
+      )
+    );
+  }, []);
   const icons = [
     {
       title: "question",
